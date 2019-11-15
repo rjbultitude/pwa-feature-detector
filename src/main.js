@@ -12,6 +12,7 @@
       'Navigation Preload': 'navigationPreload' in registration,
       'Storage Estimation': 'storage' in nav && 'estimate' in nav.storage,
       'Persistent Storage': 'storage' in nav && 'persist' in nav.storage,
+      'Cache storage': 'caches' in win,
       'Web Share (Level 1)': 'share' in nav,
       'Web Share (Level 2)': 'share' in nav && 'canShare' in nav,
       'Media Session': 'mediaSession' in nav,
@@ -23,6 +24,8 @@
       'Credential Management': 'credentials' in nav &&
           'preventSilentAccess' in nav.credentials &&
           ('PasswordCredential' in win || 'FederatedCredential' in win),
+      'Bluetooth': 'Bluetooth' in win,
+      'Gyroscope': 'Gyroscope' in win,
       'Device Orientation': 'DeviceOrientationEvent' in win,
       'Device Motion': 'DeviceMotionEvent' in win,
       'Media input': 'mediaDevices' in nav,
