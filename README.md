@@ -1,9 +1,11 @@
-# 🕵️ PWA Feature Detector
+# PWA Feature Detector
 
 ## Description
 
-Please see the [🔬 corresponding research paper](https://ai.google/research/pubs/pub46739)
-for details on the [Progressive Web App 🕵️ Feature Detector](https://tomayac.github.io/pwa-feature-detector/).
+This web app aims to provide a comprehensive list of PWA features for the browser and device it's running in. [Access the online verison here](https://rjbultitude.github.io/pwa-feature-detector/docs/).
+
+For more detail please see the [corresponding research paper](https://ai.google/research/pubs/pub46739)
+for details on the [Progressive Web App Feature Detector](https://tomayac.github.io/pwa-feature-detector/).
 
 ## License
 Copyright 2018 Thomas Steiner (tomac@google.com)
