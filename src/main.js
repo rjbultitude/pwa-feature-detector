@@ -23,6 +23,9 @@
       'Credential Management': 'credentials' in nav &&
           'preventSilentAccess' in nav.credentials &&
           ('PasswordCredential' in win || 'FederatedCredential' in win),
+      'Device Orientation': 'DeviceOrientationEvent' in win,
+      'Device Motion': 'DeviceMotionEvent' in win,
+      'Media input': 'mediaDevices' in nav,
     };
   };
 

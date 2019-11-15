@@ -3,6 +3,7 @@
   "version": "1.0.10",
   "description": "Progressive Web App 🕵️ Feature Detector",
   "scripts": {
+    "start": "http-server  -c-1",
     "lint": "eslint src/ --fix",
     "build:img": "mkdir -p docs && imagemin img/* --out-dir=docs",
     "build:html": "mkdir -p docs && html-minifier --collapse-boolean-attributes --collapse-whitespace --minify-css --custom-attr-collapse /on/ --remove-attribute-quotes --process-scripts application/json --sort-attributes --sort-class-name --minify-urls -o docs/index.html src/index.html",
@@ -24,6 +25,7 @@
     "eslint": "^6.1.0",
     "eslint-config-google": "^0.13.0",
     "html-minifier": "^4.0.0",
+    "http-server": "^0.11.1",
     "imagemin-cli": "^5.0.0"
   },
   "eslintConfig": {
