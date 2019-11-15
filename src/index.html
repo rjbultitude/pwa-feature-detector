@@ -16,14 +16,15 @@
       body {
         align-items: center;
         background-color: #cccccc;
-        display: flex;
         font-size: 1rem;
-        flex-direction: column;
+        margin: 0;
+        padding: 0;
       }
       h1 {
         color: #000000;
         font-size: 2.25rem;
         font-weight: normal;
+        margin: 0;
       }
       h2 {
         color: #000;
@@ -35,7 +36,8 @@
         width: 90vw;
         max-width: 400px;
       }
-      tr, td {
+      tr,
+      td {
         margin: 0;
       }
       tr:nth-child(even) {
@@ -51,6 +53,10 @@
         text-align: center;
         color: #00c500;
       }
+      .main {
+        display: flex;
+        flex-direction: column;
+      }
       .notice {
         background-color: #fff;
         padding: .75rem;
@@ -58,20 +64,27 @@
         width: 90vw;
         max-width: 400px;
       }
-      .main {
-        max-width: 960px;
+      .header {
+        background-color: #ffffff;
+      }
+      .inner-wrapper {
+        max-width: 700px;
+        margin: 0 auto;
+        padding-top: 1rem;
       }
     </style>
     <script src="main.min.js"></script>
   </head>
   <body>
     <main class="main">
-      <h1>Progressive Web App Feature Detector</h1>
-      <p>This web app aims to provide a comprehensive list of PWA features for the browser and device it's running in.</p>
-      <p>
-        Read the corresponding <a href="https://ai.google/research/pubs/pub46739">research paper</a>.
-      </p>
-      <div id="features">
+      <section class="header">
+        <div class="inner-wrapper">
+          <h1>Progressive Web App Feature Detector</h1>
+          <p>This web app aims to provide a comprehensive list of PWA features for the browser and device it's running in.</p>
+          <p>Read the corresponding <a href="https://ai.google/research/pubs/pub46739">research paper</a>.</p>
+        </div>
+      </section>
+      <section id="features" class="inner-wrapper">
         <div class="notice" id="userAgent"></div>
         <table>
           <tr id="placeholder">
@@ -92,7 +105,7 @@
             <td class="support"></td>
           </tr>
         </template>
-      </div>
+      </section>
       </main>
   </body>
 </html>
