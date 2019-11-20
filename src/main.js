@@ -21,6 +21,7 @@
       'Getting Installed Related Apps': 'getInstalledRelatedApps' in nav,
       'Payment Request': 'PaymentRequest' in win,
       'Payment Handler': 'paymentManager' in registration,
+      'Apple Pay Payment Handler': 'ApplePaySession' in win,
       'Credential Management': 'credentials' in nav &&
           'preventSilentAccess' in nav.credentials &&
           ('PasswordCredential' in win || 'FederatedCredential' in win),
