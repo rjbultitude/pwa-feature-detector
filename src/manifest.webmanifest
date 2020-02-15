@@ -4,7 +4,7 @@
   "name": "\uD83D\uDD75\uFE0F\u200D\u2640\uFE0F Progressive Web App Feature Detector",
   "short_name": "\uD83D\uDD75\uFE0F\u200D\u2640\uFE0F PWA Detector",
   "description": "A Progressive Web App that detects what Progressive Web App features a given browser supports.",
-  "scope": "https://tomayac.github.io/pwa-feature-detector/",
+  "scope": "https://rjbultitude.github.io/pwa-feature-detector/",
   "icons": [
     {
       "src": "icon_120x120.png",
@@ -12,9 +12,9 @@
       "type": "image/png"
     }
   ],
-  "display": "browser",
+  "display": "fullscreen",
   "orientation":  "portrait-primary",
-  "start_url": "https://tomayac.github.io/pwa-feature-detector/",
+  "start_url": "https://rjbultitude.github.io/pwa-feature-detector/",
   "theme_color": "#ffd700",
   "background_color": "#ff8032"
 }
