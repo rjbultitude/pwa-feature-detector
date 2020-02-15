@@ -5,10 +5,13 @@
   "scripts": {
     "start": "http-server  -c-1",
     "lint": "eslint src/ --fix",
+    "build:jsdev": "mkdir -p docs && cp src/main.js docs/main.min.js && cp src/sw.js docs/sw.min.js",
+    "build:htmldev": "mkdir -p docs && cp src/index.html docs/index.html",
     "build:img": "mkdir -p docs && imagemin img/* --out-dir=docs",
     "build:html": "mkdir -p docs && html-minifier --collapse-boolean-attributes --collapse-whitespace --minify-css --custom-attr-collapse /on/ --remove-attribute-quotes --process-scripts application/json --sort-attributes --sort-class-name --minify-urls -o docs/index.html src/index.html",
     "build:js": "mkdir -p docs && minify src/main.js --out-file docs/main.min.js && minify src/sw.js --out-file docs/sw.min.js",
-    "build:all": "rm -rf docs && npm run build:img && npm run build:html && npm run build:js && cp src/manifest.webmanifest docs/manifest.webmanifest"
+    "build:all": "rm -rf docs && npm run build:img && npm run build:html && npm run build:js && cp src/manifest.webmanifest docs/manifest.webmanifest",
+    "build:alldev": "rm -rf docs && npm run build:img && npm run build:htmldev && npm run build:jsdev && cp src/manifest.webmanifest docs/manifest.webmanifest"
   },
   "repository": {
     "type": "git",
