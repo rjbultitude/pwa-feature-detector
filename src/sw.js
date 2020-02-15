@@ -1,4 +1,4 @@
-const DYNAMIC_STATIC_NAME = 'dyn-v1a';
+const DYNAMIC_CACHE_NAME = 'dyn-v1a';
 const btnAdd = document.getElementById('add');
 let deferredPrompt;
 
@@ -15,6 +15,17 @@ self.addEventListener('install', (installEvent) => {
 });
 
 self.addEventListener('activate', (activateEvent) => {
+  event.waitUntil(
+    caches.keys()
+      .then(function resolve(keyList) {
+        return Promise.all(keyList.map(function mapCb(key) {
+          if (key !== DYNAMIC_CACHE_NAME) {
+            console.log('[Service Worker] Removing old cache.', key);
+            return caches.delete(key);
+          }
+        }));
+      })
+  );
   return self.clients.claim();
 });
 
@@ -23,7 +34,7 @@ self.addEventListener('fetch', function(event) {
     // Try the network
     fetch(event.request)
       .then(function(res) {
-        return caches.open(DYNAMIC_STATIC_NAME)
+        return caches.open(DYNAMIC_CACHE_NAME)
           .then(function(cache) {
             // Put in cache if succeeds
             cache.put(event.request.url, res.clone());
