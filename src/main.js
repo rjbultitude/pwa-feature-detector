@@ -1,5 +1,5 @@
 ((win, doc, nav) => {
-  const btnAdd = document.getElementById('add');
+  const btnAdd = doc.getElementById('add');
   const detectFeatures = (registration) => {
     return {
       'Offline Capabilities': 'caches' in win,
