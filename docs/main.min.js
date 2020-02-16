@@ -96,7 +96,7 @@
         continue;
       }
       featureCell.textContent = feature;
-      supportCell.textContent = pwaFeatures[feature] ? '✅' : '❌';
+      supportCell.textContent = pwaFeatures[feature] ? 'Yes' : 'No';
       fragment.appendChild(doc.importNode(featureRow.content, true));
     }
     const placeholder = doc.getElementById('placeholder');
