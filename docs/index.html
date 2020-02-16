@@ -35,11 +35,23 @@
       input {
         font-size: 1rem;
       }
+      .inner-section,
+      table {
+        width: 90vw;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      video,
+      canvas {
+        border: 1px solid #000000;
+        margin-bottom: 1rem;
+        width: 100%;
+        min-height: 300px;
+        height: auto;
+      }
       table {
         border: solid 3px #ffffff;
         border-collapse: collapse;
-        width: 90vw;
-        max-width: 400px;
       }
       tr,
       td {
@@ -56,7 +68,6 @@
       }
       .support {
         text-align: center;
-        color: #00c500;
       }
       .main {
         display: flex;
@@ -126,25 +137,27 @@
       </section>
     </main>
     <section class="inner-wrapper">
-      <h2>Live Features</h2>
-      <div>
-        <label>Access device default camera</label>
-        <input type="file" accept="image/*" capture />
-      </div>
-      <div>
-        <label>Access device user-facing camera</label>
-        <input type="file" accept="image/*" capture="user">
-      </div>
-      <div>
-        <label>Access device outward-facing camera</label>
-        <input type="file" accept="image/*" capture="environment">
-      </div>
-      <div>
-        <h2>Camera capture</h2>
-        <video id="player" width=320 height=240 controls autoplay></video>
-        <button class="cta" id="camera-capture-stop">Stop video capture</button>
-        <button class="cta" id="camera-capture">Take a picture</button>
-        <canvas id="camera-input" width=320 height=240></canvas>
+      <div class="inner-section">
+        <h2>Live Features</h2>
+        <div>
+          <label>Access device default camera</label>
+          <input type="file" accept="image/*" capture />
+        </div>
+        <div>
+          <label>Access device user-facing camera</label>
+          <input type="file" accept="image/*" capture="user">
+        </div>
+        <div>
+          <label>Access device outward-facing camera</label>
+          <input type="file" accept="image/*" capture="environment">
+        </div>
+        <div>
+          <h2>Camera capture</h2>
+          <video id="player" controls autoplay></video>
+          <button class="cta" id="camera-capture-stop">Stop video capture</button>
+          <button class="cta" id="camera-capture">Take a picture</button>
+          <canvas id="camera-input"></canvas>
+        </div>
       </div>
     </section>
     <section class="inner-wrapper toast">
