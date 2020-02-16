@@ -9,22 +9,46 @@
   }
 
   // Camera
+  const player = document.getElementById('player');
   const camCanvas = doc.getElementById('camera-input');
   const camCaptureBtn = doc.getElementById('camera-capture');
   const camCaptureStopBtn = doc.getElementById('camera-capture-stop');
-  const player = document.getElementById('player');
+  const camCapStopTxt = 'Stop video capture';
+  const camCapStartTxt = 'Start video capture';
+
+  player.style.display = 'none';
+  camCanvas.style.display = 'none';
+  camCaptureBtn.style.display = 'none';
+  camCaptureStopBtn.style.display = 'none';
+
   if ('mediaDevices' in navigator) {
+    player.style.display = 'block';
+    camCanvas.style.display = 'block';
+    camCaptureBtn.style.display = 'inline-block';
+    camCaptureStopBtn.style.display = 'inline-block';
+
+    function startCamVidStream() {
+      navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
+        player.srcObject = stream;
+      });
+    }
+
     const context = camCanvas.getContext('2d');
     camCaptureBtn.addEventListener('click', () => {
       // Draw the video frame to the canvas.
       context.drawImage(player, 0, 0, camCanvas.width, camCanvas.height);
     });
+    // Start/Stop video stream
     camCaptureStopBtn.addEventListener('click', () => {
-      player.srcObject.getVideoTracks().forEach((track) => track.stop());
+      if (camCaptureStopBtn.innerText === camCapStopTxt) {
+        player.srcObject.getVideoTracks().forEach((track) => track.stop());
+        camCaptureStopBtn.innerText = camCapStartTxt;
+        return;
+      }
+      startCamVidStream();
+      camCaptureStopBtn.innerText = camCapStopTxt;
     });
-    navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
-      player.srcObject = stream;
-    });
+    startCamVidStream();
   }
 
   // Feature detection

@@ -32,6 +32,9 @@
         color: #000;
         font-size: 1.35rem;
       }
+      input {
+        font-size: 1rem;
+      }
       table {
         border: solid 3px #ffffff;
         border-collapse: collapse;
@@ -70,6 +73,7 @@
         border: 1px solid #000000;
         padding: 1rem;
         background-color: #ffffff;
+        font-size: 1rem;
       }
       .toast {
         background-color: #ff8032;
@@ -96,7 +100,6 @@
         <div class="inner-wrapper">
           <h1>Progressive Web App Feature Detector</h1>
           <p>This web app aims to provide a comprehensive list of PWA features for the browser and device it's running in.</p>
-          <p>Read the corresponding <a href="https://ai.google/research/pubs/pub46739">research paper</a>.</p>
         </div>
       </section>
       <section id="features" class="inner-wrapper">
@@ -121,25 +124,31 @@
           </tr>
         </template>
       </section>
-      </main>
-      <section class="inner-wrapper">
-        <h2>Live Features</h2>
-        <div>
-          <label>Camera access</label>
-          <input type="file" accept="image/*" capture />
-          <input type="file" accept="image/*" capture="user">
-          <input type="file" accept="image/*" capture="environment">
-        </div>
-        <div>
-          <h2>Camera capture</h2>
-          <video id="player" width=320 height=240 controls autoplay></video>
-          <canvas id="camera-input" width=320 height=240></canvas>
-          <button id="camera-capture">Capture</button>
-          <button id="camera-capture-stop">Stop Capture</button>
-        </div>
-      </section>
-      <section class="inner-wrapper toast">
-        <button class="cta" id="add">Add to Home Screen</button>
-      </section>
+    </main>
+    <section class="inner-wrapper">
+      <h2>Live Features</h2>
+      <div>
+        <label>Access device default camera</label>
+        <input type="file" accept="image/*" capture />
+      </div>
+      <div>
+        <label>Access device user-facing camera</label>
+        <input type="file" accept="image/*" capture="user">
+      </div>
+      <div>
+        <label>Access device outward-facing camera</label>
+        <input type="file" accept="image/*" capture="environment">
+      </div>
+      <div>
+        <h2>Camera capture</h2>
+        <video id="player" width=320 height=240 controls autoplay></video>
+        <button class="cta" id="camera-capture-stop">Stop video capture</button>
+        <button class="cta" id="camera-capture">Take a picture</button>
+        <canvas id="camera-input" width=320 height=240></canvas>
+      </div>
+    </section>
+    <section class="inner-wrapper toast">
+      <button class="cta" id="add">Add to Home Screen</button>
+    </section>
   </body>
 </html>
