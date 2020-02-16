@@ -1,24 +1,44 @@
-const DYNAMIC_CACHE_NAME = 'dyn-v1a';
-let deferredPrompt;
+var CACHE_STATIC_NAME = 'static-v1a';
+var staticCacheAssets = [
+  '/',
+  'index.html',
+  'main.min.js'
+];
 
-self.isOnlyIfCached = function isOnlyIfCached(event) {
-  if (event.request !== undefined) {
-    if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
-      return true;
+function networkElseCache (event) {
+  return caches.match(event.request).then(function resolve(match) {
+    if (!match) {
+      return fetch(event.request);
     }
-  }
-};
+    return fetch(event.request).then(function resolve(response) {
+      caches.open(CACHE_STATIC_NAME).then(function resolve(cache) {
+        cache.put(event.request, response.clone());
+        return response;
+      }) || response;
+    });
+  });
+}
 
-self.addEventListener('install', (installEvent) => {
-  return;
+self.addEventListener('install', (event) => {
+  if (e.request.cache === 'only-if-cached' && e.request.mode !== 'same-origin') {
+    return;
+  }
+  event.waitUntil(
+    caches.open(CACHE_STATIC_NAME).then(function resolve(cache) {
+      console.log('[Service Worker] Precaching App Shell');
+      return cache.addAll(staticCacheAssets).catch(function(e) {
+        console.warn('Error with', e);
+      });
+  }));
 });
 
-self.addEventListener('activate', (activateEvent) => {
+// Delete old cache on activation
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
       .then(function resolve(keyList) {
         return Promise.all(keyList.map(function mapCb(key) {
-          if (key !== DYNAMIC_CACHE_NAME) {
+          if (key !== CACHE_STATIC_NAME) {
             console.log('[Service Worker] Removing old cache.', key);
             return caches.delete(key);
           }
@@ -29,26 +49,14 @@ self.addEventListener('activate', (activateEvent) => {
 });
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    // Try the network
-    fetch(event.request)
-      .then(function(res) {
-        return caches.open(DYNAMIC_CACHE_NAME)
-          .then(function(cache) {
-            // Put in cache if succeeds
-            cache.put(event.request.url, res.clone());
-            return res;
-          })
-      })
-      .catch(function (err) {
-          // Fallback to cache
-          return caches.match(event.request)
-            .then(function(res) {
-              if (res === undefined) {
-              // get and return the offline page
-            }
-            return res;
-        })
-      })
-  );
+  if (e.request.cache === 'only-if-cached' && e.request.mode !== 'same-origin') {
+    return;
+  }
+  if (event.request.method !== 'GET') {
+    return;
+  }
+  if (staticCacheAssets.indexOf(event.request.url) !== -1) {
+    event.respondWith(networkElseCache(event));
+  }
+  event.respondWith(fetch(event.request));
 });

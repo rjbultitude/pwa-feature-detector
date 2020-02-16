@@ -1,5 +1,10 @@
 ((win, doc, nav) => {
+  // Add to HS
+  let deferredPrompt;
   const btnAdd = doc.getElementById('add');
+  btnAdd.style.display = 'none';
+
+  // Feature detection
   const detectFeatures = (registration) => {
     return {
       'Offline Capabilities': 'caches' in win,
@@ -53,30 +58,27 @@
 
   win.addEventListener('load', () => {
     doc.getElementById('userAgent').textContent = nav.userAgent;
-    win.setTimeout(() => {
-      if ('serviceWorker' in nav) {
-        return nav.serviceWorker.register('sw.min.js')
-            .then((registration) => {
-              const pwaFeatures = detectFeatures(registration);
-              updateUserInterface(pwaFeatures);
-              // navigator.serviceWorker.controller.postMessage();
-            });
-      }
-      updateUserInterface({'Service Workers Not Supported': false});
-    }, 500);
+    if ('serviceWorker' in nav) {
+      return nav.serviceWorker.register('sw.min.js')
+          .then((registration) => {
+            const pwaFeatures = detectFeatures(registration);
+            updateUserInterface(pwaFeatures);
+          });
+    }
+    updateUserInterface({'Service Workers Not Supported': false});
   });
 
   window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    // Prevent Chrome 76 and later from showing the mini-infobar
     e.preventDefault();
     // Stash the event so it can be triggered later.
     deferredPrompt = e;
     console.log('beforeinstallprompt fired', deferredPrompt);
-    // showInstallPromotion();
+    addBtn.style.display = 'block';
 });
 
 btnAdd.addEventListener('click', (e) => {
-    // hide our user interface that shows our A2HS button
-    btnAdd.style.display = 'none';
     // Show the prompt
     deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
