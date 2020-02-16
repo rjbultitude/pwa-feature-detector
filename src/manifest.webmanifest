@@ -24,7 +24,7 @@
   ],
   "display": "fullscreen",
   "orientation":  "portrait-primary",
-  "start_url": "https://rjbultitude.github.io/pwa-feature-detector/",
+  "start_url": "https://rjbultitude.github.io/pwa-feature-detector/docs/",
   "theme_color": "#ffd700",
   "background_color": "#ff8032"
 }
