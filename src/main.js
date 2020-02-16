@@ -17,7 +17,7 @@
     const context = camCanvas.getContext('2d');
     camCaptureBtn.addEventListener('click', () => {
       // Draw the video frame to the canvas.
-      context.drawImage(player, 0, 0, canvas.width, canvas.height);
+      context.drawImage(player, 0, 0, camCanvas.width, camCanvas.height);
     });
     camCaptureStopBtn.addEventListener('click', () => {
       player.srcObject.getVideoTracks().forEach((track) => track.stop());
