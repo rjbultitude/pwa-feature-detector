@@ -8,6 +8,21 @@
     addBtn.style.display = 'block';
   }
 
+  // Camera
+  const camCanvas = doc.getElementById('camera-input');
+  const camCaptureBtn = doc.getElementById('camera-capture');
+  const player = document.getElementById('player');
+  if ('mediaDevices' in navigator) {
+    const context = camCanvas.getContext('2d');
+    camCaptureBtn.addEventListener('click', () => {
+      // Draw the video frame to the canvas.
+      context.drawImage(player, 0, 0, canvas.width, canvas.height);
+    });
+    navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
+      player.srcObject = stream;
+    });
+  }
+
   // Feature detection
   const detectFeatures = (registration) => {
     return {

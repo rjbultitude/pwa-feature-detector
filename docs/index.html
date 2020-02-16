@@ -120,7 +120,13 @@
       <section class="inner-wrapper">
         <h2>Live Features</h2>
         <label>Camera access</label>
-        <input type="file" accept="image/*" capture="camera" />
+        <input type="file" accept="image/*" capture />
+        <input type="file" accept="image/*" capture="user">
+        <input type="file" accept="image/*" capture="environment">
+        <h2>Camera capture</h2>
+        <video id="player" controls autoplay></video>
+        <canvas id="camera-input">
+        <button id="camera-capture">Capture</button>
       </section>
       <section class="inner-wrapper toast">
         <button class="cta" id="add">Add to Home Screen</button>
