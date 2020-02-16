@@ -66,6 +66,11 @@
         max-width: 400px;
         width: 90vw;
       }
+      .cta {
+        border: 1px solid #000000;
+        padding: 1rem;
+        background-color: #ffffff;
+      }
       .toast {
         background-color: #ff8032;
         color: #ffffff;
@@ -119,15 +124,19 @@
       </main>
       <section class="inner-wrapper">
         <h2>Live Features</h2>
-        <label>Camera access</label>
-        <input type="file" accept="image/*" capture />
-        <input type="file" accept="image/*" capture="user">
-        <input type="file" accept="image/*" capture="environment">
-        <h2>Camera capture</h2>
-        <video id="player" width=320 height=240 controls autoplay></video>
-        <canvas id="camera-input" width=320 height=240></canvas>
-        <button id="camera-capture">Capture</button>
-        <button id="camera-capture-stop">Stop Capture</button>
+        <div>
+          <label>Camera access</label>
+          <input type="file" accept="image/*" capture />
+          <input type="file" accept="image/*" capture="user">
+          <input type="file" accept="image/*" capture="environment">
+        </div>
+        <div>
+          <h2>Camera capture</h2>
+          <video id="player" width=320 height=240 controls autoplay></video>
+          <canvas id="camera-input" width=320 height=240></canvas>
+          <button id="camera-capture">Capture</button>
+          <button id="camera-capture-stop">Stop Capture</button>
+        </div>
       </section>
       <section class="inner-wrapper toast">
         <button class="cta" id="add">Add to Home Screen</button>
