@@ -24,11 +24,14 @@ self.addEventListener('install', (event) => {
     return;
   }
   event.waitUntil(
-    caches.open(CACHE_STATIC_NAME).then(function resolve(cache) {
-      console.log('[Service Worker] Precaching App Shell');
-      return cache.addAll(staticCacheAssets).catch(function(e) {
-        console.warn('Error with', e);
-      });
+    caches.open(CACHE_STATIC_NAME)
+      .then(function resolve(cache) {
+        console.log('[Service Worker] Precaching App Shell');
+        return cache.addAll(staticCacheAssets)
+          .then(self.skipWaiting())
+          .catch(function(e) {
+            console.warn('Error with', e);
+          });
   }));
 });
 

@@ -4,6 +4,10 @@
   const btnAdd = doc.getElementById('add');
   btnAdd.style.display = 'none';
 
+  function showAddHS() {
+    addBtn.style.display = 'block';
+  }
+
   // Feature detection
   const detectFeatures = (registration) => {
     return {
@@ -71,14 +75,14 @@
   window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     // Prevent Chrome 76 and later from showing the mini-infobar
-    e.preventDefault();
+    // e.preventDefault();
     // Stash the event so it can be triggered later.
     deferredPrompt = e;
     console.log('beforeinstallprompt fired', deferredPrompt);
-    addBtn.style.display = 'block';
-});
+    showAddHS();
+  });
 
-btnAdd.addEventListener('click', (e) => {
+  btnAdd.addEventListener('click', (e) => {
     // Show the prompt
     deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
@@ -96,4 +100,18 @@ btnAdd.addEventListener('click', (e) => {
   window.addEventListener('appinstalled', (evt) => {
     console.log('a2hs installed');
   });
+
+  // iOS
+  // Detects if device is on iOS
+  const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test( userAgent );
+  }
+  // Detects if device is in standalone mode
+  const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+  // Checks if should display install popup notification:
+  if (isIos() && !isInStandaloneMode()) {
+    showAddHS();
+  }
 })(window, document, navigator);
