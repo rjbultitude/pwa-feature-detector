@@ -2,7 +2,7 @@ var CACHE_STATIC_NAME = 'static-v1a';
 var staticCacheAssets = [
   '/',
   'index.html',
-  'main.min.js'
+  'main.js'
 ];
 
 function networkElseCache (event) {
