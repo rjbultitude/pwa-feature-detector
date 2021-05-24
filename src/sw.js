@@ -1,4 +1,4 @@
-var CACHE_STATIC_NAME = 'static-v1b';
+var CACHE_STATIC_NAME = 'static-v1c';
 var staticCacheAssets = [
   '/',
   'index.html',
