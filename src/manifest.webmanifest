@@ -7,8 +7,8 @@
   "scope": "https://rjbultitude.github.io/pwa-feature-detector/docs/",
   "icons": [
     {
-      "src": "icon_120x120.png",
-      "sizes": "120x120",
+      "src": "icon_128x128.png",
+      "sizes": "128x128",
       "type": "image/png"
     },
     {
