@@ -9,7 +9,7 @@ for details on the [Progressive Web App Feature Detector](https://tomayac.github
 
 Contributions welcome!
 
-Top publish changes be sure to run `npm build:all`
+Top publish changes be sure to run `npm run build:all`
 
 ## License
 Current version copyright 2019 Richard Bultitude
