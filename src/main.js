@@ -66,6 +66,7 @@
       'Storage Estimation': 'storage' in nav && 'estimate' in nav.storage,
       'Persistent Storage': 'storage' in nav && 'persist' in nav.storage,
       'Cache storage': 'caches' in win,
+      'File System Access': 'showOpenFilePicker' in win,
       'Web Share (Level 1)': 'share' in nav,
       'Web Share (Level 2)': 'share' in nav && 'canShare' in nav,
       'Media Session': 'mediaSession' in nav,
